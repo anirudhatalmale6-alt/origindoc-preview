@@ -2,7 +2,15 @@
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ORIGINDOC EXPRESS · versión de pruebas</title>
 <meta name="robots" content="noindex">
-<meta http-equiv="refresh" content="1;url=https://57b48e46187b74c6-167-235-196-123.serveousercontent.com/">
 <style>body{font-family:system-ui,sans-serif;background:#f7f8fa;color:#0f1b2d;display:grid;place-items:center;min-height:100vh;margin:0}div{background:#fff;border:1px solid #e4e7ec;border-radius:12px;padding:28px 32px;text-align:center;max-width:420px}a{display:inline-block;margin-top:14px;background:#f37f1f;color:#fff;padding:11px 20px;border-radius:10px;text-decoration:none;font-weight:600}</style>
-</head><body><div><b>ORIGINDOC EXPRESS</b><p>Abriendo la versión de pruebas…</p><a href="https://57b48e46187b74c6-167-235-196-123.serveousercontent.com/">Abrir la plataforma</a></div>
-<script>location.replace("https://57b48e46187b74c6-167-235-196-123.serveousercontent.com/");</script></body></html>
+</head><body><div><b>ORIGINDOC EXPRESS</b><p id="m">Abriendo la versión de pruebas…</p><a id="go" href="https://57b48e46187b74c6-167-235-196-123.serveousercontent.com/">Abrir la plataforma</a></div>
+<script>
+(function(){
+  var fallback = "https://57b48e46187b74c6-167-235-196-123.serveousercontent.com";
+  function go(u){ document.getElementById('go').href = u + '/'; location.replace(u + '/'); }
+  fetch('https://api.github.com/repos/anirudhatalmale6-alt/origindoc-preview/contents/url.txt?t=' + Date.now(), {headers:{'Accept':'application/vnd.github.raw'}, cache:'no-store'})
+    .then(function(r){ return r.ok ? r.text() : fallback; })
+    .then(function(u){ u = (u || '').trim(); go(/^https:\/\/[a-z0-9.-]+$/.test(u) ? u : fallback); })
+    .catch(function(){ go(fallback); });
+})();
+</script></body></html>
